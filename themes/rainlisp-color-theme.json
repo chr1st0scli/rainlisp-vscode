@@ -1,0 +1,74 @@
+{
+	"name": "RainLisp Theme",
+	"colors": {
+		"editor.background": "#1F1F1F",
+		"editor.foreground": "#CCCCCC",
+		"activityBarBadge.background": "#007acc",
+		"sideBarTitle.foreground": "#bbbbbb"
+	},
+	"tokenColors": [
+		{
+			"name": "Boolean",
+			"scope": [
+				"literal.boolean.rainlisp"
+			],
+			"settings": {
+				"foreground": "#568ca2"
+			}
+		},
+		{
+			"name": "Number",
+			"scope": [
+				"literal.number.rainlisp"
+			],
+			"settings": {
+				"foreground": "#B5CEA8"
+			}
+		},
+		{
+			"name": "String",
+			"scope": [
+				"literal.string.rainlisp"
+			],
+			"settings": {
+				"foreground": "#CE9178"
+			}
+		},
+		{
+			"name": "Keyword",
+			"scope": [
+				"keyword.rainlisp"
+			],
+			"settings": {
+				"foreground": "#C586C0"
+			}
+		},
+		{
+			"name": "Primitive",
+			"scope": [
+				"primitive.rainlisp"
+			],
+			"settings": {
+				"foreground": "#569CD6"
+			}
+		},
+		{
+			"name": "Library",
+			"scope": [
+				"library.rainlisp"
+			],
+			"settings": {
+				"foreground": "#569CD6"
+			}
+		},
+		{
+			"name": "Comment",
+			"scope": [
+				"comment.rainlisp",
+			],
+			"settings": {
+				"foreground": "#6A9955"
+			}
+		}
+	]
+}
