@@ -43,8 +43,7 @@
     "body": [
       "(if ${1:predicate}",
       "    ${2:consequent}",
-      "    ${3:optional_alternative})",
-      "$0"
+      "    ${3:optional_alternative})"
     ],
     "description": "Creates an if expression."
   },
@@ -53,8 +52,7 @@
     "body": [
       "(cond (${1:predicate} ${2:consequents})",
       "      (${3:predicate} ${4:consequents})",
-      "      (else ${5:optional_alternatives}))",
-      "$0"
+      "      (else ${5:optional_alternatives}))"
     ],
     "description": "Creates a cond expression."
   },
@@ -63,8 +61,7 @@
     "body": [
       "(begin",
       "\t${1:expression}",
-      "\t${2:optional_expressions})",
-      "$0"
+      "\t${2:optional_expressions})"
     ],
     "description": "Creates a begin expression block."
   },
@@ -72,8 +69,7 @@
     "prefix": "lambda",
     "body": [
       "(lambda (${1:optional_parameters})",
-      "\t${2:body})",
-      "$0"
+      "\t${2:body})"
     ],
     "description": "Creates a lambda."
   },
@@ -82,8 +78,7 @@
     "body": [
       "(let ((${1:id} ${2:expression})",
       "      (${3:id} ${4:expression}))",
-      "     ${5:body})",
-      "$0"
+      "     ${5:body})"
     ],
     "description": "Creates a scope."
   },
