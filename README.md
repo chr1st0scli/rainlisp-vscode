@@ -1,5 +1,7 @@
 # RainLisp VSCode
 
+[![License](https://img.shields.io/github/license/chr1st0scli/rainlisp-vscode)](LICENSE.txt)
+
 ![Logo](images/RainLisp-Colored-128x128.png)
 
 VSCode extension for [RainLisp](https://github.com/chr1st0scli/RainLisp) support.
