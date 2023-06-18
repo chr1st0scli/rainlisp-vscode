@@ -37,7 +37,7 @@ Once installed, you can hit Ctrl + F5, or cmd+9 for MacOS, while working with a 
 
 ## Release Notes
 
-### 1.0.0-alpha001
+### 1.0.0-alpha.1
 
 Initial release.
 
