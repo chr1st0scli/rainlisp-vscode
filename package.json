@@ -4,6 +4,10 @@
   "description": "RainLisp support for VSCode. RainLisp is a LISP implementation running on dotnet.",
   "icon": "images/RainLisp-Colored-128x128.png",
   "version": "0.0.1",
+  "publisher": "chr1st0scli",
+  "author": {
+    "name": "Christos Giamouridis"
+  },
   "license": "SEE LICENSE IN LICENSE.txt",
   "badges": [
     {
