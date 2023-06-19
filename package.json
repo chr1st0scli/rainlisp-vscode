@@ -3,7 +3,7 @@
   "displayName": "RainLisp for VSCode",
   "description": "RainLisp support for VSCode. RainLisp is a LISP implementation running on dotnet.",
   "icon": "images/RainLisp-Colored-128x128.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "chr1st0scli",
   "author": {
     "name": "Christos Giamouridis"
@@ -14,6 +14,11 @@
       "description": "License",
       "url": "https://img.shields.io/github/license/chr1st0scli/rainlisp-vscode",
       "href": "https://github.com/chr1st0scli/rainlisp-vscode/blob/main/LICENSE.txt"
+    },
+    {
+      "description": "Visual Studio Marketplace",
+      "url": "https://img.shields.io/visual-studio-marketplace/v/chr1st0scli.rainlisp-vscode",
+      "href": "https://marketplace.visualstudio.com/items?itemName=chr1st0scli.rainlisp-vscode"
     }
   ],
   "homepage": "https://github.com/chr1st0scli/rainlisp-vscode",
@@ -45,8 +50,8 @@
     "keybindings":[
       {
         "command": "rainlisp-vscode.evaluate",
-        "key": "ctrl+F5",
-        "mac": "cmd+9",
+        "key": "ctrl+f12",
+        "mac": "cmd+f12",
         "when": "editorTextFocus"
       }
     ],

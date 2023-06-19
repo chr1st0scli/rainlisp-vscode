@@ -2,7 +2,6 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "RainLisp",
 	"patterns": [
-		{ "include": "#delimeter" },
 		{ "include": "#boolean" },
 		{ "include": "#number" },
 		{ "include": "#string" },
@@ -31,6 +30,11 @@
 				}
 			]
 		},
+		"comment": {
+			"name": "comment.rainlisp",
+			"begin": ";",
+			"end": "\n"
+		},
 		"keyword": {
 			"name": "keyword.rainlisp",
 			"match": "((?<=[()\\s])|^)(quote|set!|define|if|cond|else|begin|lambda|and|or|let)((?=[;'\"()\\s])|$)"
@@ -42,11 +46,6 @@
 		"library": {
 			"name": "library.rainlisp",
 			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
-		},
-		"comment": {
-			"name": "comment.rainlisp",
-			"begin": ";",
-			"end": "\n"
 		}
 	},
 	"scopeName": "source.rainlisp"
