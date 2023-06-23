@@ -1,5 +1,5 @@
 interface PrimitiveProcedure {
-    label : string;
-    detail : string;
+    name : string;
+    signature : string;
     documentation : string;
 }

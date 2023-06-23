@@ -1,15 +1,17 @@
 import * as vscode from 'vscode';
 import { ProceduresDataSource } from './ProceduresDataSource';
 
-
-
 export class RainLispCompletionItemProvider implements vscode.CompletionItemProvider {
+
+    public constructor() {
+        //console.log("constructed");
+    }
     
     provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList<vscode.CompletionItem>> {
 
         return ProceduresDataSource.getProceduresDataSource().getProceduresMetadata().map((value: PrimitiveProcedure, index: number, array: PrimitiveProcedure[]) => {
-            const completionItem = new vscode.CompletionItem(value.label, vscode.CompletionItemKind.Function);
-            completionItem.detail = value.detail;
+            const completionItem = new vscode.CompletionItem(value.name, vscode.CompletionItemKind.Function);
+            completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];
 
             const markdownString = new vscode.MarkdownString(value.documentation);
