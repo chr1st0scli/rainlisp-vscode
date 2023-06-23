@@ -18,6 +18,98 @@ export class ProceduresDataSource {
 
     private primitiveProcedures: PrimitiveProcedure[] = [
         {
+            name: '+',
+            signature: '(+ num1 num2 . nums) | (+ str1 str2 . strs)',
+            documentation: `\`(+ num1 num2 . nums)\`
+Returns the sum of numeric values. It accepts two or more values.
+
+\`(+ str1 str2 . strs)\`
+Returns the concatenation of string values. It accepts two or more values.
+
+[docs](RainLisp/Docs/primitives/plus.md)`
+        },
+        {
+            name: '-',
+            signature: '(- num1 num2 . nums)',
+            documentation: `Returns the result of subtracting two or more numeric values. The subtraction accumulates from left to right.
+
+[docs](RainLisp/Docs/primitives/minus.md)`
+        },
+        {
+            name: '*',
+            signature: '(* num1 num2 . nums)',
+            documentation: `Returns the result of multiplying two or more numeric values.
+
+[docs](RainLisp/Docs/primitives/multiply.md)`
+        },
+        {
+            name: '/',
+            signature: '(/ num1 num2 . nums)',
+            documentation: `Returns the result of dividing two or more numeric values. The division accumulates from left to right.
+
+[docs](RainLisp/Docs/primitives/divide.md)`
+        },
+        {
+            name: '%',
+            signature: '(% num1 num2 . nums)',
+            documentation: `Returns the result of calculating the modulo of two or more numeric values. The operation accumulates from left to right.
+
+[docs](RainLisp/Docs/primitives/modulo.md)`
+        },
+        {
+            name: '<',
+            signature: '(< num1 num2) | (< datetime1 datetime2)',
+            documentation: `\`(< num1 num2)\`
+Determines if the first numeric value is less than the second one.
+
+\`(< datetime1 datetime2)\`
+Determines if the first datetime is earlier than the second one, ignoring time zones.
+
+[docs](RainLisp/Docs/primitives/less.md)`
+        },
+        {
+            name: '<=',
+            signature: '(<= num1 num2) | (<= datetime1 datetime2)',
+            documentation: `\`(<= num1 num2)\`
+Determines if the first numeric value is less than or equal to the second one.
+
+\`(<= datetime1 datetime2)\`
+Determines if the first datetime is the same as or earlier than the second one, ignoring time zones.
+
+[docs](RainLisp/Docs/primitives/less-or-equal.md)`
+        },
+        {
+            name: '=',
+            signature: '(= value1 value2)',
+            documentation: `Determines if two values are equal. Primitive values like numbers, strings, booleans and datetimes are compared by value. All others are compared by reference.
+
+> In traditional Scheme LISP, there are two related primitives. *equal?* compares values and *eq?* compares references. RainLisp differentiates in this regard and encapsulates both with *=*.
+
+[docs](RainLisp/Docs/primitives/equal.md)`
+        },
+        {
+            name: '>',
+            signature: '(> num1 num2) | (> datetime1 datetime2)',
+            documentation: `\`(> num1 num2)\`
+Determines if the first numeric value is greater than the second one.
+
+\`(> datetime1 datetime2)\`
+Determines if the first datetime is later than the second one, ignoring time zones.
+
+[docs](RainLisp/Docs/primitives/greater.md)`
+        },
+        {
+            name: '>=',
+            signature: '(>= num1 num2) | (>= datetime1 datetime2)',
+            documentation: `\`(>= num1 num2)\`
+Determines if the first numeric value is greater than or equal to the second one.
+
+\`(>= datetime1 datetime2)\`
+Determines if the first datetime is the same as or later than the second one, ignoring time zones.
+
+[docs](RainLisp/Docs/primitives/greater-or-equal.md)`
+        },
+        {
             name: 'add-days', 
             signature: '(add-days datetime num)', 
             documentation: `Returns a new datetime that adds the specified number of days to the specified datetime.
@@ -178,7 +270,7 @@ A numeric primitive value is formatted using the invariant culture but all other
         },
         {
             name: 'eval',
-            signature: '(eval quote-symbol | quote-symbols-list)',
+            signature: '(eval quote-symbol) | (eval quote-symbols-list)',
             documentation: `\`(eval quote-symbol)\`
 Returns a result by evaluating a quote symbol as user code.
 
