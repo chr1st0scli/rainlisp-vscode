@@ -1,13 +1,14 @@
-export class ProceduresDataSource {
-    private static procedureDataSource: ProceduresDataSource;
+export class ProcedureMetaDataSource {
 
-    public static getProceduresDataSource(): ProceduresDataSource {
+    private static dataSource: ProcedureMetaDataSource;
 
-        if (!this.procedureDataSource) {
-            this.procedureDataSource = new ProceduresDataSource();
+    public static getDataSource(): ProcedureMetaDataSource {
+
+        if (!this.dataSource) {
+            this.dataSource = new ProcedureMetaDataSource();
         }
 
-        return this.procedureDataSource;
+        return this.dataSource;
     }
 
     public getProceduresMetadata(): ProcedureMetadata[] {

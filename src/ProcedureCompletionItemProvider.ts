@@ -1,18 +1,23 @@
 import * as vscode from 'vscode';
-import { ProceduresDataSource } from './ProceduresDataSource';
+import { ProcedureMetaDataSource } from './ProcedureMetaDataSource';
 
-export class RainLispCompletionItemProvider implements vscode.CompletionItemProvider {
+const DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
+
+export class ProcedureCompletionItemProvider implements vscode.CompletionItemProvider {
 
     private procedureCompletionItems: vscode.CompletionItem[];
 
     public constructor() {
-        this.procedureCompletionItems = ProceduresDataSource.getProceduresDataSource().getProceduresMetadata().map((value: ProcedureMetadata, index: number, array: ProcedureMetadata[]) => {
+
+        const procedureMetadataSource = ProcedureMetaDataSource.getDataSource();
+
+        this.procedureCompletionItems = procedureMetadataSource.getProceduresMetadata().map((value: ProcedureMetadata, index: number, array: ProcedureMetadata[]) => {
             const completionItem = new vscode.CompletionItem(value.name, vscode.CompletionItemKind.Function);
             completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];
 
             const markdownString = new vscode.MarkdownString(value.documentation);
-            markdownString.baseUri = vscode.Uri.parse('https://github.com/chr1st0scli/RainLisp/blob/master/');
+            markdownString.baseUri = vscode.Uri.parse(DOCS_BASE_URI);
             completionItem.documentation = markdownString;
             
             return completionItem;
