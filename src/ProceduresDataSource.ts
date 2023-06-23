@@ -17,6 +17,7 @@ export class ProceduresDataSource {
     private constructor() {}
 
     private primitiveProcedures: PrimitiveProcedure[] = [
+        //#region Primitive Procedures.
         {
             name: '+',
             signature: '(+ num1 num2 . nums) | (+ str1 str2 . strs)',
@@ -612,6 +613,105 @@ Note that only the integral part of the numeric arguments is considered.
             documentation: `Returns the year of a given datetime value, expressed as a value between 1 and 9999.
 
 [docs](RainLisp/Docs/primitives/year.md)`
-        }
+        },
+        //#endregion
+
+        //#region Library Procedures.
+        {
+            name: 'append',
+            signature: '(append list1 list2)',
+            documentation: `Returns a new list by appending list2 to list1.
+
+[docs](RainLisp/Docs/common-libraries/append.md)`
+        },
+        {
+            name: 'filter',
+            signature: '(filter predicate sequence)',
+            documentation: `Returns a new list containing only the elements of a list that satisfy a condition.
+
+> *sequence* is the list to filter.
+
+> *predicate* is a procedure accepting a single argument (each element of *sequence* at a time) and its result is evaluated as a boolean.
+
+[docs](RainLisp/Docs/common-libraries/filter.md)`
+        },
+        {
+            name: 'flatmap',
+            signature: '(flatmap proc sequence)',
+            documentation: `Projects each element of a list to a list of many and flattens the results in a single list.
+
+> *proc* is a procedure accepting a single argument (each element of *sequence* at a time) and returning a list.
+
+> *sequence* is the list whose each element is mapped to many.
+
+[docs](RainLisp/Docs/common-libraries/flatmap.md)`
+        },
+        {
+            name: 'fold-left',
+            signature: '(fold-left op initial sequence)',
+            documentation: `Returns a result by accumulating a computation on a list from left to right.
+
+> *op* is a procedure accepting two arguments and returning the result of accumulation on each step.
+
+> *initial* is the seed of the accumulation.
+
+> *sequence* is the list to accumulate.
+
+The first *op* call's arguments is the initial seed followed by the first element of the list.
+
+[docs](RainLisp/Docs/common-libraries/fold-left.md)`
+        },
+        {
+            name: 'fold-right',
+            signature: '(fold-right op initial sequence)',
+            documentation: `Returns a result by accumulating a computation on a list from right to left.
+
+> *op* is a procedure accepting two arguments and returning the result of accumulation on each step.
+
+> *initial* is the seed of the accumulation.
+
+> *sequence* is the list to accumulate.
+
+The first *op* call's arguments is the last element of the list followed by the initial seed.
+
+[docs](RainLisp/Docs/common-libraries/fold-right.md)`
+        },
+        {
+            name: 'length',
+            signature: '(length sequence)',
+            documentation: `Returns the length of a list.
+
+[docs](RainLisp/Docs/common-libraries/length.md)`
+        },
+        {
+            name: 'map',
+            signature: '(map proc sequence)',
+            documentation: `Returns a new list with the projections of a given list's elements.
+
+> *proc* is a procedure accepting a single argument (each element of *sequence* at a time) and returning a projection.
+
+> *sequence* is the list whose each element is mapped to another one.
+
+[docs](RainLisp/Docs/common-libraries/map.md)`
+        },
+        {
+            name: 'reduce',
+            signature: '(reduce op sequence)',
+            documentation: `Returns a result by accumulating a computation on a list from left to right.
+
+> *op* is a procedure accepting two arguments and returning the result of accumulation on each step.
+
+> *sequence* is the list to accumulate.
+
+[docs](RainLisp/Docs/common-libraries/reduce.md)`
+        },
+        {
+            name: 'reverse',
+            signature: '(reverse sequence)',
+            documentation: `Returns a new list by reversing the elements of a given one.
+
+[docs](RainLisp/Docs/common-libraries/reverse.md)`
+        },
+        //#endregion
     ];
 }
