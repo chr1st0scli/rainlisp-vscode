@@ -1,36 +1,34 @@
-import * as vscode from 'vscode';
+import { CancellationToken, CompletionContext, CompletionItem, CompletionItemKind, CompletionItemProvider, CompletionList, MarkdownString, Position, ProviderResult, TextDocument, Uri } from 'vscode';
 import { ProcedureMetaDataSource } from './ProcedureMetaDataSource';
 
 const DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
 
-export class ProcedureCompletionItemProvider implements vscode.CompletionItemProvider {
+export class ProcedureCompletionItemProvider implements CompletionItemProvider {
 
-    private procedureCompletionItems: vscode.CompletionItem[];
+    private procedureCompletionItems: CompletionItem[];
 
     public constructor() {
 
         const procedureMetadataSource = ProcedureMetaDataSource.getDataSource();
 
         this.procedureCompletionItems = procedureMetadataSource.getProceduresMetadata().map((value: ProcedureMetadata, index: number, array: ProcedureMetadata[]) => {
-            const completionItem = new vscode.CompletionItem(value.name, vscode.CompletionItemKind.Function);
+            const completionItem = new CompletionItem(value.name, CompletionItemKind.Function);
             completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];
 
-            const markdownString = new vscode.MarkdownString(value.documentation);
-            markdownString.baseUri = vscode.Uri.parse(DOCS_BASE_URI);
+            const markdownString = new MarkdownString(value.documentation);
+            markdownString.baseUri = Uri.parse(DOCS_BASE_URI);
             completionItem.documentation = markdownString;
             
             return completionItem;
         });
     }
-    
-    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList<vscode.CompletionItem>> {
 
+    provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): ProviderResult<CompletionItem[] | CompletionList<CompletionItem>> {
         return this.procedureCompletionItems;
     }
-    
-    // resolveCompletionItem?(item: vscode.CompletionItem, token: vscode.CancellationToken): vscode.ProviderResult<vscode.CompletionItem> {
-    //     console.log('Entered');
+
+    // resolveCompletionItem?(item: CompletionItem, token: CancellationToken): ProviderResult<CompletionItem> {
     //     throw new Error('Method not implemented.');
     // }
 }
