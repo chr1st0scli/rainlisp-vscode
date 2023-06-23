@@ -6,7 +6,7 @@ export class RainLispCompletionItemProvider implements vscode.CompletionItemProv
     private procedureCompletionItems: vscode.CompletionItem[];
 
     public constructor() {
-        this.procedureCompletionItems = ProceduresDataSource.getProceduresDataSource().getProceduresMetadata().map((value: PrimitiveProcedure, index: number, array: PrimitiveProcedure[]) => {
+        this.procedureCompletionItems = ProceduresDataSource.getProceduresDataSource().getProceduresMetadata().map((value: ProcedureMetadata, index: number, array: ProcedureMetadata[]) => {
             const completionItem = new vscode.CompletionItem(value.name, vscode.CompletionItemKind.Function);
             completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];

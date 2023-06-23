@@ -10,13 +10,13 @@ export class ProceduresDataSource {
         return this.procedureDataSource;
     }
 
-    public getProceduresMetadata(): PrimitiveProcedure[] {
-        return this.primitiveProcedures;
+    public getProceduresMetadata(): ProcedureMetadata[] {
+        return this.proceduresMetadata;
     }
 
     private constructor() {}
 
-    private primitiveProcedures: PrimitiveProcedure[] = [
+    private proceduresMetadata: ProcedureMetadata[] = [
         //#region Primitive Procedures.
         {
             name: '+',
