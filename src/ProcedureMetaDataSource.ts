@@ -1,5 +1,7 @@
 export class ProcedureMetaDataSource {
 
+    public static readonly DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
+
     private static dataSource: ProcedureMetaDataSource;
 
     public static getDataSource(): ProcedureMetaDataSource {
@@ -15,7 +17,19 @@ export class ProcedureMetaDataSource {
         return this.proceduresMetadata;
     }
 
-    private constructor() {}
+    public getProcedureMetadata(name: string): ProcedureMetadata | undefined {
+        return this.proceduresMetadataDictionary.get(name);
+    }
+
+    private constructor() {
+        this.proceduresMetadataDictionary = new Map<string, ProcedureMetadata>();
+
+        this.proceduresMetadata.forEach(element => {
+            this.proceduresMetadataDictionary.set(element.name, element);
+        });
+    }
+
+    private proceduresMetadataDictionary: Map<string, ProcedureMetadata>;
 
     private proceduresMetadata: ProcedureMetadata[] = [
         //#region Primitive Procedures.

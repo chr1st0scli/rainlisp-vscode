@@ -1,8 +1,6 @@
 import { CancellationToken, CompletionContext, CompletionItem, CompletionItemKind, CompletionItemProvider, CompletionList, MarkdownString, Position, ProviderResult, TextDocument, Uri } from 'vscode';
 import { ProcedureMetaDataSource } from './ProcedureMetaDataSource';
 
-const DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
-
 export class ProcedureCompletionItemProvider implements CompletionItemProvider {
 
     private procedureCompletionItems: CompletionItem[];
@@ -17,7 +15,7 @@ export class ProcedureCompletionItemProvider implements CompletionItemProvider {
             completionItem.commitCharacters = [' '];
 
             const markdownString = new MarkdownString(value.documentation);
-            markdownString.baseUri = Uri.parse(DOCS_BASE_URI);
+            markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
             completionItem.documentation = markdownString;
             
             return completionItem;
