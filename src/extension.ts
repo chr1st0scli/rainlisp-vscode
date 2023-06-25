@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	context.subscriptions.push(vscode.languages.registerCompletionItemProvider('rainlisp', new ProcedureCompletionItemProvider(), '('));
 	context.subscriptions.push(vscode.languages.registerHoverProvider('rainlisp', new ProcedureHoverProvider()));
-	//context.subscriptions.push(vscode.languages.registerSignatureHelpProvider('rainlisp', new ProcedureSignatureHelpProvider(), ' '));
+	context.subscriptions.push(vscode.languages.registerSignatureHelpProvider('rainlisp', new ProcedureSignatureHelpProvider(), ' ', '\t', '\n'));
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
