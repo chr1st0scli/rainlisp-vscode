@@ -7,54 +7,45 @@ export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
 
     provideSignatureHelp(document: TextDocument, position: Position, token: CancellationToken, context: SignatureHelpContext): ProviderResult<SignatureHelp> {
 
-        if (context.isRetrigger && this.lastSignatureHelp) {
+        console.log('Retrigger: ' + context.isRetrigger);
+        console.log('Trigger char: ' + (context.triggerCharacter == " " ? "space" : (context.triggerCharacter == "\n" ? "\n" : (context.triggerCharacter == "\t" ? "\t" : context.triggerCharacter))));
 
-            if (context.triggerCharacter?.match(/\s/)) {
-                this.lastSignatureHelp.activeParameter++;
-            }
-
-            return this.lastSignatureHelp;
-        } else {
-
-            this.lastSignatureHelp = undefined;
-
-            if (context.triggerCharacter?.match(/\s/)) {
-                position = new Position(position.line, position.character - 1);
-            }
-            const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
-
-            if (!wordRange) {
-                return;
-            }
-    
-            const word = document.getText(wordRange);
-            const metadataSource = ProcedureMetaDataSource.getDataSource();
-            const procedureMetadata = metadataSource.getProcedureMetadata(word);
-
-            if (!procedureMetadata) {
-                return null;
-            }
-
-            const markdownString = new MarkdownString(procedureMetadata.documentation);
-            //markdownString.appendCodeblock(procedureMetadata.signature);
-            //markdownString.appendMarkdown(procedureMetadata.documentation);
-            markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
-            
-            const signatureInfo = new SignatureInformation(procedureMetadata.signature, markdownString);
-            
-            signatureInfo.parameters = [
-                new ParameterInformation('datetime', '*datetime* to add days to.'),
-                new ParameterInformation('num', '*num* is the whole and fractional number of days to add, which can be positive or negative.'),
-            ];
-    
-            const signatureHelp = new SignatureHelp();
-            signatureHelp.signatures = [signatureInfo];
-            signatureHelp.activeSignature = 0;
-            signatureHelp.activeParameter = 0;
-
-            this.lastSignatureHelp = signatureHelp;
-
-            return signatureHelp;
+        if (context.triggerCharacter == ' ') {
+            position = new Position(position.line, position.character - 1);
         }
+        const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
+
+        if (!wordRange) {
+            console.log('Not a word range');
+            if (context.isRetrigger) {
+                return this.lastSignatureHelp;
+            }
+            return;
+        }
+
+        const word = document.getText(wordRange);
+
+        console.log("Word: " + word);
+
+        const metadataSource = ProcedureMetaDataSource.getDataSource();
+        const procedureMetadata = metadataSource.getProcedureMetadata(word);
+
+        if (!procedureMetadata) {
+            if (context.isRetrigger) {
+                return this.lastSignatureHelp;
+            }
+            return null;
+        }
+
+        const markdownString = new MarkdownString(procedureMetadata.documentation);
+        markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
+        
+        const signatureInfo = new SignatureInformation(procedureMetadata.signature, markdownString);
+        const signatureHelp = new SignatureHelp();
+        signatureHelp.signatures = [signatureInfo];
+
+        this.lastSignatureHelp = signatureHelp;
+
+        return signatureHelp;
     }
 }
