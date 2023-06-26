@@ -25,8 +25,4 @@ export class ProcedureCompletionItemProvider implements CompletionItemProvider {
     provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): ProviderResult<CompletionItem[] | CompletionList<CompletionItem>> {
         return this.procedureCompletionItems;
     }
-
-    // resolveCompletionItem?(item: CompletionItem, token: CancellationToken): ProviderResult<CompletionItem> {
-    //     throw new Error('Method not implemented.');
-    // }
 }

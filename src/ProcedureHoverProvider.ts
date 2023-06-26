@@ -3,6 +3,12 @@ import { ProcedureMetaDataSource } from "./ProcedureMetaDataSource";
 
 export class ProcedureHoverProvider implements HoverProvider {
 
+    private metadataSource: ProcedureMetaDataSource;
+
+    public constructor() {
+        this.metadataSource = ProcedureMetaDataSource.getDataSource();
+    }
+
     provideHover(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<Hover> {
 
         const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
@@ -12,8 +18,7 @@ export class ProcedureHoverProvider implements HoverProvider {
         }
 
         const word = document.getText(wordRange);
-        const metadataSource = ProcedureMetaDataSource.getDataSource();
-        const procedureMetadata = metadataSource.getProcedureMetadata(word);
+        const procedureMetadata = this.metadataSource.getProcedureMetadata(word);
 
         if (!procedureMetadata) {
             return null;
