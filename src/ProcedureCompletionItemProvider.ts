@@ -3,6 +3,8 @@ import { ProcedureMetaDataSource } from './ProcedureMetaDataSource';
 
 export class ProcedureCompletionItemProvider implements CompletionItemProvider {
 
+    public static readonly TRIGGER_CHAR = '(';
+
     private procedureCompletionItems: CompletionItem[];
 
     public constructor() {

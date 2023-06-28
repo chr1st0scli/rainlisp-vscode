@@ -3,6 +3,9 @@ import { ProcedureMetaDataSource } from "./ProcedureMetaDataSource";
 
 export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
 
+    public static readonly SPACE_TRIGGER_CHAR = ' ';
+    public static readonly NEWLINE_TRIGGER_CHAR = '\n';
+
     private metadataSource: ProcedureMetaDataSource;
 
     public constructor() {
@@ -15,8 +18,10 @@ export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
         // A more elaborate solution, with multiple procedure signatures and parameter traversal, would require a
         // language server protocol implementation that would take advantage of RainLisp's parser.
 
-        if (context.triggerCharacter == ' ') {
+        if (context.triggerCharacter == ProcedureSignatureHelpProvider.SPACE_TRIGGER_CHAR) {
             position = new Position(position.line, position.character - 1);
+        } else if (context.triggerCharacter == ProcedureSignatureHelpProvider.NEWLINE_TRIGGER_CHAR) {
+            position = document.lineAt(position.line - 1).range.end;
         }
         const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
 
