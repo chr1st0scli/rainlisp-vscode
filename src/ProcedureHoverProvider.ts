@@ -11,7 +11,7 @@ export class ProcedureHoverProvider implements HoverProvider {
 
     provideHover(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<Hover> {
 
-        const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
+        const wordRange = document.getWordRangeAtPosition(position);
 
         if (!wordRange) {
             return;
