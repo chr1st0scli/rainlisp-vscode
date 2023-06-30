@@ -9,12 +9,16 @@
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
-        ["(", ")"],
-        ["\"", "\""]
+        { "open": "(", "close": ")", "notIn": ["comment", "string"] },
+        { "open": "\"", "close": "\"", "notIn": ["comment", "string"] }
     ],
+    // auto closing pairs work before delimeters of the language.
+    "autoCloseBefore": ";'\"() \n\t",
     // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["(", ")"],
         ["\"", "\""]
-    ]
+    ],
+    // defines what a word is. It is used in signature help and hover providers and word highlighting.
+    "wordPattern": "[^\\s\\(\\)]+"
 }

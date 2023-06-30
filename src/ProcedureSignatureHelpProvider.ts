@@ -23,7 +23,7 @@ export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
         } else if (context.triggerCharacter == ProcedureSignatureHelpProvider.NEWLINE_TRIGGER_CHAR) {
             position = document.lineAt(position.line - 1).range.end;
         }
-        const wordRange = document.getWordRangeAtPosition(position, /[^\s\(\)]+/);
+        const wordRange = document.getWordRangeAtPosition(position);
 
         if (!wordRange) {
             if (context.isRetrigger) {
