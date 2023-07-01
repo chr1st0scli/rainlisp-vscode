@@ -1,37 +1,46 @@
-export class ProcedureMetaDataSource {
+export class LangMetaDataSource {
 
     public static readonly DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
 
-    private static dataSource: ProcedureMetaDataSource;
+    private static dataSource: LangMetaDataSource;
 
-    public static getDataSource(): ProcedureMetaDataSource {
+    public static getDataSource(): LangMetaDataSource {
 
         if (!this.dataSource) {
-            this.dataSource = new ProcedureMetaDataSource();
+            this.dataSource = new LangMetaDataSource();
         }
 
         return this.dataSource;
     }
 
-    public getProceduresMetadata(): ProcedureMetadata[] {
-        return this.proceduresMetadata;
+    public getMetadata(): LangEntityMetadata[] {
+        return this.metadata;
     }
 
-    public getProcedureMetadata(name: string): ProcedureMetadata | undefined {
-        return this.proceduresMetadataDictionary.get(name);
+    public getMetadataFor(name: string): LangEntityMetadata | undefined {
+        return this.metadataMap.get(name);
     }
 
     private constructor() {
-        this.proceduresMetadataDictionary = new Map<string, ProcedureMetadata>();
+        this.metadataMap = new Map<string, LangEntityMetadata>();
 
-        this.proceduresMetadata.forEach(element => {
-            this.proceduresMetadataDictionary.set(element.name, element);
+        this.metadata.forEach(element => {
+            this.metadataMap.set(element.name, element);
         });
     }
 
-    private proceduresMetadataDictionary: Map<string, ProcedureMetadata>;
+    private metadataMap: Map<string, LangEntityMetadata>;
 
-    private proceduresMetadata: ProcedureMetadata[] = [
+    private metadata: LangEntityMetadata[] = [
+        {
+            name: 'nil',
+            keyword: true,
+            signature: 'nil',
+            documentation: `Returns the empty list. The empty list is a reference type and unique in a system wide scope. It also serves as list termination.
+
+[docs](RainLisp/Docs/primitives/nil.md)`
+        },
+
         //#region Primitive Procedures.
         {
             name: '+',

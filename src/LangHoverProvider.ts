@@ -1,12 +1,12 @@
 import { CancellationToken, Hover, HoverProvider, MarkdownString, Position, ProviderResult, TextDocument, Uri } from "vscode";
-import { ProcedureMetaDataSource } from "./ProcedureMetaDataSource";
+import { LangMetaDataSource } from "./LangMetaDataSource";
 
-export class ProcedureHoverProvider implements HoverProvider {
+export class LangHoverProvider implements HoverProvider {
 
-    private metadataSource: ProcedureMetaDataSource;
+    private metadataSource: LangMetaDataSource;
 
     public constructor() {
-        this.metadataSource = ProcedureMetaDataSource.getDataSource();
+        this.metadataSource = LangMetaDataSource.getDataSource();
     }
 
     provideHover(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<Hover> {
@@ -18,16 +18,16 @@ export class ProcedureHoverProvider implements HoverProvider {
         }
 
         const word = document.getText(wordRange);
-        const procedureMetadata = this.metadataSource.getProcedureMetadata(word);
+        const metadata = this.metadataSource.getMetadataFor(word);
 
-        if (!procedureMetadata) {
+        if (!metadata) {
             return null;
         }
 
         const markdownString = new MarkdownString();
-        markdownString.appendCodeblock(procedureMetadata.signature);
-        markdownString.appendMarkdown(procedureMetadata.documentation);
-        markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
+        markdownString.appendCodeblock(metadata.signature);
+        markdownString.appendMarkdown(metadata.documentation);
+        markdownString.baseUri = Uri.parse(LangMetaDataSource.DOCS_BASE_URI);
         
         return new Hover(markdownString, wordRange);
     }

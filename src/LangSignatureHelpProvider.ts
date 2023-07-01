@@ -1,15 +1,15 @@
 import { CancellationToken, MarkdownString, ParameterInformation, Position, ProviderResult, SignatureHelp, SignatureHelpContext, SignatureHelpProvider, SignatureInformation, TextDocument, Uri } from "vscode";
-import { ProcedureMetaDataSource } from "./ProcedureMetaDataSource";
+import { LangMetaDataSource } from "./LangMetaDataSource";
 
-export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
+export class LangSignatureHelpProvider implements SignatureHelpProvider {
 
     public static readonly SPACE_TRIGGER_CHAR = ' ';
     public static readonly NEWLINE_TRIGGER_CHAR = '\n';
 
-    private metadataSource: ProcedureMetaDataSource;
+    private metadataSource: LangMetaDataSource;
 
     public constructor() {
-        this.metadataSource = ProcedureMetaDataSource.getDataSource();
+        this.metadataSource = LangMetaDataSource.getDataSource();
     }
 
     provideSignatureHelp(document: TextDocument, position: Position, token: CancellationToken, context: SignatureHelpContext): ProviderResult<SignatureHelp> {
@@ -18,9 +18,9 @@ export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
         // A more elaborate solution, with multiple procedure signatures and parameter traversal, would require a
         // language server protocol implementation that would take advantage of RainLisp's parser.
 
-        if (context.triggerCharacter == ProcedureSignatureHelpProvider.SPACE_TRIGGER_CHAR) {
+        if (context.triggerCharacter == LangSignatureHelpProvider.SPACE_TRIGGER_CHAR) {
             position = new Position(position.line, position.character - 1);
-        } else if (context.triggerCharacter == ProcedureSignatureHelpProvider.NEWLINE_TRIGGER_CHAR) {
+        } else if (context.triggerCharacter == LangSignatureHelpProvider.NEWLINE_TRIGGER_CHAR) {
             position = document.lineAt(position.line - 1).range.end;
         }
         const wordRange = document.getWordRangeAtPosition(position);
@@ -33,20 +33,20 @@ export class ProcedureSignatureHelpProvider implements SignatureHelpProvider {
         }
 
         const word = document.getText(wordRange);
-        const procedureMetadata = this.metadataSource.getProcedureMetadata(word);
+        const metadata = this.metadataSource.getMetadataFor(word);
 
-        if (!procedureMetadata) {
+        if (!metadata) {
             if (context.isRetrigger) {
                 return context.activeSignatureHelp;
             }
             return null;
         }
 
-        const markdownString = new MarkdownString(procedureMetadata.documentation);
-        markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
+        const markdownString = new MarkdownString(metadata.documentation);
+        markdownString.baseUri = Uri.parse(LangMetaDataSource.DOCS_BASE_URI);
         
         const signatureHelp = new SignatureHelp();
-        signatureHelp.signatures = [new SignatureInformation(procedureMetadata.signature, markdownString)];
+        signatureHelp.signatures = [new SignatureInformation(metadata.signature, markdownString)];
 
         return signatureHelp;
     }
