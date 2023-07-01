@@ -644,9 +644,9 @@ Note that only the integral part of the numeric arguments is considered.
             signature: '(filter predicate sequence)',
             documentation: `Returns a new list containing only the elements of a list that satisfy a condition.
 
-> *sequence* is the list to filter.
-
 > *predicate* is a procedure accepting a single argument (each element of *sequence* at a time) and its result is evaluated as a boolean.
+
+> *sequence* is the list to filter.
 
 [docs](RainLisp/Docs/common-libraries/filter.md)`
         },
