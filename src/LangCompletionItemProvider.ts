@@ -1,23 +1,23 @@
 import { CancellationToken, CompletionContext, CompletionItem, CompletionItemKind, CompletionItemProvider, CompletionList, MarkdownString, Position, ProviderResult, TextDocument, Uri } from 'vscode';
-import { ProcedureMetaDataSource } from './ProcedureMetaDataSource';
+import { LangMetaDataSource } from './LangMetaDataSource';
 
-export class ProcedureCompletionItemProvider implements CompletionItemProvider {
+export class LangCompletionItemProvider implements CompletionItemProvider {
 
     public static readonly TRIGGER_CHAR = '(';
 
-    private procedureCompletionItems: CompletionItem[];
+    private completionItems: CompletionItem[];
 
     public constructor() {
 
-        const procedureMetadataSource = ProcedureMetaDataSource.getDataSource();
+        const metadataSource = LangMetaDataSource.getDataSource();
 
-        this.procedureCompletionItems = procedureMetadataSource.getProceduresMetadata().map((value: ProcedureMetadata, index: number, array: ProcedureMetadata[]) => {
-            const completionItem = new CompletionItem(value.name, CompletionItemKind.Function);
+        this.completionItems = metadataSource.getMetadata().map((value: LangEntityMetadata, index: number, array: LangEntityMetadata[]) => {
+            const completionItem = new CompletionItem(value.name, value.keyword ? CompletionItemKind.Keyword : CompletionItemKind.Function);
             completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];
 
             const markdownString = new MarkdownString(value.documentation);
-            markdownString.baseUri = Uri.parse(ProcedureMetaDataSource.DOCS_BASE_URI);
+            markdownString.baseUri = Uri.parse(LangMetaDataSource.DOCS_BASE_URI);
             completionItem.documentation = markdownString;
             
             return completionItem;
@@ -25,6 +25,6 @@ export class ProcedureCompletionItemProvider implements CompletionItemProvider {
     }
 
     provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): ProviderResult<CompletionItem[] | CompletionList<CompletionItem>> {
-        return this.procedureCompletionItems;
+        return this.completionItems;
     }
 }
