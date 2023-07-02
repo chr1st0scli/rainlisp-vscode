@@ -1,3 +1,5 @@
+import { LangEntityMetadata, LangEntityType } from "./LangEntityMetadata";
+
 export class LangMetaDataSource {
 
     public static readonly DOCS_BASE_URI = 'https://github.com/chr1st0scli/RainLisp/blob/master/';
@@ -34,7 +36,7 @@ export class LangMetaDataSource {
     private metadata: LangEntityMetadata[] = [
         {
             name: 'nil',
-            keyword: true,
+            type: LangEntityType.Constant,
             signature: 'nil',
             documentation: `Returns the empty list. The empty list is a reference type and unique in a system wide scope. It also serves as list termination.
 

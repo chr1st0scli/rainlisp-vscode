@@ -1,5 +1,6 @@
 import { CancellationToken, CompletionContext, CompletionItem, CompletionItemKind, CompletionItemProvider, CompletionList, MarkdownString, Position, ProviderResult, TextDocument, Uri } from 'vscode';
 import { LangMetaDataSource } from './LangMetaDataSource';
+import { LangEntityMetadata, LangEntityType } from './LangEntityMetadata';
 
 export class LangCompletionItemProvider implements CompletionItemProvider {
 
@@ -12,7 +13,16 @@ export class LangCompletionItemProvider implements CompletionItemProvider {
         const metadataSource = LangMetaDataSource.getDataSource();
 
         this.completionItems = metadataSource.getMetadata().map((value: LangEntityMetadata, index: number, array: LangEntityMetadata[]) => {
-            const completionItem = new CompletionItem(value.name, value.keyword ? CompletionItemKind.Keyword : CompletionItemKind.Function);
+            const completionItem = new CompletionItem(value.name);
+
+            if (value.type == LangEntityType.Keyword) {
+                completionItem.kind = CompletionItemKind.Keyword;
+            } else if (value.type == LangEntityType.Constant) {
+                completionItem.kind = CompletionItemKind.Constant;
+            } else {
+                completionItem.kind = CompletionItemKind.Function;
+            }
+
             completionItem.detail = value.signature;
             completionItem.commitCharacters = [' '];
 

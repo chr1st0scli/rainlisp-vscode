@@ -1,6 +1,12 @@
-interface LangEntityMetadata {
+export interface LangEntityMetadata {
     name : string;
-    keyword? : boolean;
+    type? : LangEntityType;
     signature : string;
     documentation : string;
+}
+
+export enum LangEntityType {
+    Procedure, 
+    Constant, 
+    Keyword
 }
