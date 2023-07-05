@@ -43,6 +43,126 @@ export class LangMetaDataSource {
 [docs](RainLisp/Docs/primitives/nil.md)`
         },
 
+        //#region Keywords.
+        {
+            name: 'and',
+            type: LangEntityType.Keyword,
+            signature: '(and expression . expressions)',
+            documentation: `A derived expression that implements a logical and. It accepts at least one expression.
+Each expression is evaluated from left to right, until one evaluates to false or the last expression is reached, in which case it is the result of the evaluation.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/and.md)`
+        },
+        {
+            name: 'begin',
+            type: LangEntityType.Keyword,
+            signature: '(begin expression . expressions)',
+            documentation: `A special form for defining a block of expressions to evaluate in the order they appear.
+It accepts at least one expression and the evaluation result of the \`begin\` itself, is the last expression's result.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/begin.md)`
+        },
+        {
+            name: 'cond',
+            type: LangEntityType.Keyword,
+            signature: '(cond (predicate expression . expressions) (else expression . expressions))',
+            documentation: `A derived expression for declaring many alternative expressions to be evaluated based on the result of different predicates.
+This is typically known as an \`if... else if... else...\` expression.
+It has one or more conditional clauses, the \`(predicate expression . expressions)\` part, followed by an optional conditional else clause in the end.
+
+The first expression of a conditional clause is the predicate. If it evaluates to true, the rest of the expressions
+will be evaluated in turn and the last one's result will be the final one. If the predicates of all conditional clauses evaluate to false, the
+conditional else clause is evaluated. The expressions are once again evaluated in the order they appear and the last one's result is the final one.
+If no conditional else clause is provided, the final result is unspecified.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/cond.md)`
+        },
+        {
+            name: 'define',
+            type: LangEntityType.Keyword,
+            signature: '(define id expression) | (define (name . parameters) body)',
+            documentation: `Definition is a special form for defining variables and procedures in the current scope.
+The evaluation result of the definition itself is unspecified.
+
+A variable is defined by its identifier \`id\` followed by an expression that gives its value.
+
+A procedure is defined by its \`name\` followed by zero or more parameters and a body.
+The body consists of zero or more definitions, followed by at least one expression.
+The expressions are evaluated in the order they appear and the evaluation result of the last one
+is the final result of the procedure when called.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/define.md)`
+        },
+        {
+            name: 'if',
+            type: LangEntityType.Keyword,
+            signature: '(if predicate consequent alternative)',
+            documentation: `The first expression is the predicate. The second is the consequent, which is evaluated if the predicate evaluates to true.
+The optional last one is the alternative, which is evaluated if the predicate evaluates to false.
+If the alternative is to be evaluated and there is none, the result is unspecified.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/if.md)`
+        },
+        {
+            name: 'lambda',
+            type: LangEntityType.Keyword,
+            signature: '(lambda (. parameters) body)',
+            documentation: `The procedure's body consists of zero or more definitions, followed by at least one expression.
+The expressions are evaluated in the order they appear and the evaluation result of the last one
+is the final result of the procedure when called.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/lambda.md)`
+        },
+        {
+            name: 'let',
+            type: LangEntityType.Keyword,
+            signature: '(let ((id expression)) body)',
+            documentation: `A let clause starts with an \`id\` being the name of the variable, followed by an expression that gives its value.
+
+The body consists of zero or more definitions, followed by at least one expression.
+The expressions are evaluated in the order they appear and the evaluation result of the last one
+is the final result of the \`let\` expression.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/let.md)`
+        },
+        {
+            name: 'or',
+            type: LangEntityType.Keyword,
+            signature: '(or expression . expressions)',
+            documentation: `A derived expression that implements a logical or. It accepts at least one expression.
+Each expression is evaluated from left to right, until one evaluates to true or the last expression is reached, in which case it is the result of the evaluation.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/or.md)`
+        },
+        {
+            name: 'quote',
+            type: LangEntityType.Keyword,
+            signature: '(quote quotable) | \'quotable',
+            documentation: `A special form for creating quote symbols. A quote symbol can be viewed as a unique tag.
+It is created based on something that can be quoted, i.e. a quotable.
+
+There is an alternative form for creating a quote symbol that is equivalent to the above.
+It starts with an apostrophe \`'\` and is followed by a quotable. This form is often preferred for brevity.
+
+A quotable is anything that can be quoted. It can be a number, string or boolean literal, an identifier (e.g. variable name),
+a language keyword or a list of zero or more quotables in the form \`(. quotables)\`.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/quote.md)`
+        },
+        {
+            name: 'set!',
+            type: LangEntityType.Keyword,
+            signature: '(set! id expression)',
+            documentation: `Assignment is a special form for changing a variable's value.
+\`id\` is the identifier of the variable to change and \`expression\` gives the new value.
+
+The identifier needs to be visible in the current scope; otherwise, an error occurs.
+The evaluation result of the assignment itself is unspecified.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/set!.md)`
+        },
+        //#endregion
+
         //#region Primitive Procedures.
         {
             name: '+',
