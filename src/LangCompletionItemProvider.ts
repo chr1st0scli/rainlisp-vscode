@@ -24,8 +24,6 @@ export class LangCompletionItemProvider implements CompletionItemProvider {
             }
 
             completionItem.detail = value.signature;
-            // Keep the enter, which is the default, as the only commit character. The user must explicitly accept the completion item.
-            //completionItem.commitCharacters = [' '];
 
             const markdownString = new MarkdownString(value.documentation);
             markdownString.baseUri = Uri.parse(LangMetaDataSource.DOCS_BASE_URI);

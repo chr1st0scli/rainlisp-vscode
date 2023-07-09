@@ -80,13 +80,13 @@ If no conditional else clause is provided, the final result is unspecified.
         {
             name: 'define',
             type: LangEntityType.Keyword,
-            signature: '(define id expression) | (define (name . parameters) body)',
+            signature: '(define id expression) | (define (id . parameters) body)',
             documentation: `Definition is a special form for defining variables and procedures in the current scope.
 The evaluation result of the definition itself is unspecified.
 
-A variable is defined by its identifier \`id\` followed by an expression that gives its value.
+A variable is defined by its identifier \`id\`, followed by an expression that gives its value.
 
-A procedure is defined by its \`name\` followed by zero or more parameters and a body.
+A procedure is defined by its identifier \`id\`, followed by zero or more parameters and a body.
 The body consists of zero or more definitions, followed by at least one expression.
 The expressions are evaluated in the order they appear and the evaluation result of the last one
 is the final result of the procedure when called.
