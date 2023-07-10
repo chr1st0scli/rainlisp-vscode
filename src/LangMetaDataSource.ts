@@ -43,12 +43,13 @@ export class LangMetaDataSource {
 [docs](RainLisp/Docs/primitives/nil.md)`
         },
 
-        //#region Keywords.
+        //#region Special Forms & Derived Expressions.
         {
             name: 'and',
             type: LangEntityType.Keyword,
             signature: '(and expression . expressions)',
             documentation: `A derived expression that implements a logical and. It accepts at least one expression.
+
 Each expression is evaluated from left to right, until one evaluates to false or the last expression is reached, in which case it is the result of the evaluation.
 
 [docs](RainLisp/Docs/special-forms-derived-expressions/and.md)`
@@ -58,6 +59,7 @@ Each expression is evaluated from left to right, until one evaluates to false or
             type: LangEntityType.Keyword,
             signature: '(begin expression . expressions)',
             documentation: `A special form for defining a block of expressions to evaluate in the order they appear.
+
 It accepts at least one expression and the evaluation result of the \`begin\` itself, is the last expression's result.
 
 [docs](RainLisp/Docs/special-forms-derived-expressions/begin.md)`
@@ -97,7 +99,9 @@ is the final result of the procedure when called.
             name: 'if',
             type: LangEntityType.Keyword,
             signature: '(if predicate consequent alternative)',
-            documentation: `The first expression is the predicate. The second is the consequent, which is evaluated if the predicate evaluates to true.
+            documentation: `A special form for declaring alternative expressions to be evaluated based on the result of a predicate.
+
+The first expression is the predicate. The second is the consequent, which is evaluated if the predicate evaluates to true.
 The optional last one is the alternative, which is evaluated if the predicate evaluates to false.
 If the alternative is to be evaluated and there is none, the result is unspecified.
 
@@ -107,7 +111,9 @@ If the alternative is to be evaluated and there is none, the result is unspecifi
             name: 'lambda',
             type: LangEntityType.Keyword,
             signature: '(lambda (. parameters) body)',
-            documentation: `The procedure's body consists of zero or more definitions, followed by at least one expression.
+            documentation: `A special form for creating a user procedure with zero or more parameters. The body is executed when the procedure is called.
+
+The procedure's body consists of zero or more definitions, followed by at least one expression.
 The expressions are evaluated in the order they appear and the evaluation result of the last one
 is the final result of the procedure when called.
 
@@ -117,7 +123,11 @@ is the final result of the procedure when called.
             name: 'let',
             type: LangEntityType.Keyword,
             signature: '(let ((id expression)) body)',
-            documentation: `A let clause starts with an \`id\` being the name of the variable, followed by an expression that gives its value.
+            documentation: `A derived expression for declaring variables and expressions using them, in a scope limited
+within the \`let\` expression itself. It has one or more let clauses, the \`(id expression)\` part, which define the variables,
+followed by a body.
+            
+A let clause starts with an \`id\` being the name of the variable, followed by an expression that gives its value.
 
 The body consists of zero or more definitions, followed by at least one expression.
 The expressions are evaluated in the order they appear and the evaluation result of the last one
@@ -130,6 +140,7 @@ is the final result of the \`let\` expression.
             type: LangEntityType.Keyword,
             signature: '(or expression . expressions)',
             documentation: `A derived expression that implements a logical or. It accepts at least one expression.
+
 Each expression is evaluated from left to right, until one evaluates to true or the last expression is reached, in which case it is the result of the evaluation.
 
 [docs](RainLisp/Docs/special-forms-derived-expressions/or.md)`
