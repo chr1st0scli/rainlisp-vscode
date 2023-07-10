@@ -35,15 +35,3 @@ dotnet tool update -g RainLispConsole --version "*-alpha*"
 ```
 
 Once installed, you can hit Ctrl + F12, or cmd + F12 for MacOS, while working with a RainLisp file (*.rl), to run the code.
-
-## Release Notes
-
-### 0.0.2
-
-RainLisp Theme is now based on VSCode dark theme, so that it does not cancel out the default theme options for other languages.
-
-Changed the default evaluation key binding from Ctrl + F5 to Ctrl + F12, so that the default VSCode *Run Without Debugging* key binding is respected.
-
-### 0.0.1
-
-Initial release.
