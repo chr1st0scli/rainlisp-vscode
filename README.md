@@ -25,13 +25,13 @@ You need to have .NET 6 or later installed.
 In order to download RainLispConsole from NuGet and install it as a global tool, run the following command in a command line shell.
 
 ```
-dotnet tool install -g RainLispConsole --version "*-alpha*"
+dotnet tool install -g RainLispConsole --version "*-beta*"
 ```
 
 If you already have it installed and you want to update it, run the following command.
 
 ```
-dotnet tool update -g RainLispConsole --version "*-alpha*"
+dotnet tool update -g RainLispConsole --version "*-beta*"
 ```
 
 Once installed, you can hit Ctrl + F12, or cmd + F12 for MacOS, while working with a RainLisp file (*.rl), to run the code.
