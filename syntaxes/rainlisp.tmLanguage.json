@@ -3,6 +3,7 @@
 	"name": "RainLisp",
 	"patterns": [
 		{ "include": "#boolean" },
+		{ "include": "#nil" },
 		{ "include": "#number" },
 		{ "include": "#string" },
 		{ "include": "#comment" },
@@ -14,6 +15,10 @@
 		"boolean": {
 			"name": "constant.language.boolean.rainlisp",
 			"match": "((?<=[()\\s])|^)(true|false)((?=[;'\"()\\s])|$)"
+		},
+		"nil": {
+			"name": "constant.language.nil.rainlisp",
+			"match": "((?<=[()\\s])|^)(nil)((?=[;'\"()\\s])|$)"
 		},
 		"number": {
 			"name": "constant.numeric.decimal.rainlisp",
@@ -41,7 +46,7 @@
 		},
 		"primitive": {
 			"name": "entity.name.function.primitive.rainlisp",
-			"match": "((?<=[()\\s])|^)(\\+|-|\\*|\\/|%|<|<=|=|>|>=|add-days|add-hours|add-milliseconds|add-minutes|add-months|add-seconds|add-years|car|cdr|cons|datetime-to-string|day|days-diff|debug|display|error|eval|hour|hours-diff|index-of-string|list|make-date|make-datetime|millisecond|milliseconds-diff|minute|minutes-diff|month|newline|nil|not|now|null\\?|number-to-string|pair\\?|parse-datetime|parse-number|replace-string|round|second|seconds-diff|set-car!|set-cdr!|string-length|substring|to-local|to-lower|to-upper|to-utc|trace|utc-now|utc\\?|xor|year)((?=[;'\"()\\s])|$)"
+			"match": "((?<=[()\\s])|^)(\\+|-|\\*|\\/|%|<|<=|=|>|>=|add-days|add-hours|add-milliseconds|add-minutes|add-months|add-seconds|add-years|car|cdr|cons|datetime-to-string|day|days-diff|debug|display|error|eval|hour|hours-diff|index-of-string|list|make-date|make-datetime|millisecond|milliseconds-diff|minute|minutes-diff|month|newline|not|now|null\\?|number-to-string|pair\\?|parse-datetime|parse-number|replace-string|round|second|seconds-diff|set-car!|set-cdr!|string-length|substring|to-local|to-lower|to-upper|to-utc|trace|utc-now|utc\\?|xor|year)((?=[;'\"()\\s])|$)"
 		},
 		"library": {
 			"name": "entity.name.function.library.rainlisp",
