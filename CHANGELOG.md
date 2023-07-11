@@ -8,7 +8,7 @@ Semantic versioning is followed.
 
 ## [Unreleased]
 
-## [0.1.0] - 2023-07-10
+## [0.1.0] - 2023-07-11
 
 ### Added
 - Code completion.
@@ -16,7 +16,7 @@ Semantic versioning is followed.
 - Procedure signature help.
 
 ### Fixed
-- Syntax highlighting works even if user chooses to use a theme different than the RainLisp one.
+- Syntax highlighting works even if user chooses to use a theme different than RainLisp.
 
 ### Changed
 
