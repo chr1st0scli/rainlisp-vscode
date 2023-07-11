@@ -696,64 +696,19 @@
 	"tokenColors": [
 		// RainLisp specific coloring.
 		{
-			"name": "Boolean",
-			"scope": [
-				"literal.boolean.rainlisp"
-			],
+			"scope": "constant.language",
 			"settings": {
 				"foreground": "#568ca2"
 			}
 		},
 		{
-			"name": "Number",
-			"scope": [
-				"literal.number.rainlisp"
-			],
-			"settings": {
-				"foreground": "#B5CEA8"
-			}
-		},
-		{
-			"name": "String",
-			"scope": [
-				"literal.string.rainlisp"
-			],
-			"settings": {
-				"foreground": "#CE9178"
-			}
-		},
-		{
-			"name": "Comment",
-			"scope": [
-				"comment.rainlisp",
-			],
-			"settings": {
-				"foreground": "#6A9955"
-			}
-		},
-		{
-			"name": "Keyword",
-			"scope": [
-				"keyword.rainlisp"
-			],
+			"scope": "keyword",
 			"settings": {
 				"foreground": "#C586C0"
 			}
 		},
 		{
-			"name": "Primitive",
-			"scope": [
-				"primitive.rainlisp"
-			],
-			"settings": {
-				"foreground": "#569CD6"
-			}
-		},
-		{
-			"name": "Library",
-			"scope": [
-				"library.rainlisp"
-			],
+			"scope": "entity.name.function",
 			"settings": {
 				"foreground": "#569CD6"
 			}
@@ -797,12 +752,12 @@
 				"foreground": "#6A9955"
 			}
 		},
-		{
-			"scope": "constant.language",
-			"settings": {
-				"foreground": "#569CD6"
-			}
-		},
+		// {
+		// 	"scope": "constant.language",
+		// 	"settings": {
+		// 		"foreground": "#569CD6"
+		// 	}
+		// },
 		{
 			"scope": [
 				"constant.numeric",
@@ -1045,12 +1000,12 @@
 				"foreground": "#9CDCFE"
 			}
 		},
-		{
-			"scope": "keyword",
-			"settings": {
-				"foreground": "#569CD6"
-			}
-		},
+		// {
+		// 	"scope": "keyword",
+		// 	"settings": {
+		// 		"foreground": "#569CD6"
+		// 	}
+		// },
 		{
 			"scope": "keyword.control",
 			"settings": {

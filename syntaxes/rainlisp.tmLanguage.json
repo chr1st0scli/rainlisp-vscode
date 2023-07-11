@@ -12,15 +12,15 @@
 	],
 	"repository": {
 		"boolean": {
-			"name": "literal.boolean.rainlisp",
+			"name": "constant.language.boolean.rainlisp",
 			"match": "((?<=[()\\s])|^)(true|false)((?=[;'\"()\\s])|$)"
 		},
 		"number": {
-			"name": "literal.number.rainlisp",
+			"name": "constant.numeric.decimal.rainlisp",
 			"match": "((?<=[()\\s])|^)((\\+|-)?[0-9]+(\\.[0-9]*)?)((?=[;'\"()\\s])|$)"
 		},
 		"string": {
-			"name": "literal.string.rainlisp",
+			"name": "string.quoted.double.rainlisp",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
@@ -31,7 +31,7 @@
 			]
 		},
 		"comment": {
-			"name": "comment.rainlisp",
+			"name": "comment.line.rainlisp",
 			"begin": ";",
 			"end": "\n"
 		},
@@ -40,11 +40,11 @@
 			"match": "((?<=[()\\s])|^)(quote|set!|define|if|cond|else|begin|lambda|and|or|let)((?=[;'\"()\\s])|$)"
 		},
 		"primitive": {
-			"name": "primitive.rainlisp",
+			"name": "entity.name.function.primitive.rainlisp",
 			"match": "((?<=[()\\s])|^)(\\+|-|\\*|\\/|%|<|<=|=|>|>=|add-days|add-hours|add-milliseconds|add-minutes|add-months|add-seconds|add-years|car|cdr|cons|datetime-to-string|day|days-diff|debug|display|error|eval|hour|hours-diff|index-of-string|list|make-date|make-datetime|millisecond|milliseconds-diff|minute|minutes-diff|month|newline|nil|not|now|null\\?|number-to-string|pair\\?|parse-datetime|parse-number|replace-string|round|second|seconds-diff|set-car!|set-cdr!|string-length|substring|to-local|to-lower|to-upper|to-utc|trace|utc-now|utc\\?|xor|year)((?=[;'\"()\\s])|$)"
 		},
 		"library": {
-			"name": "library.rainlisp",
+			"name": "entity.name.function.library.rainlisp",
 			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
 		}
 	},
