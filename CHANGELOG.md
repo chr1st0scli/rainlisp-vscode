@@ -8,6 +8,25 @@ Semantic versioning is followed.
 
 ## [Unreleased]
 
+### Added
+
+### Fixed
+
+### Changed
+
+### Removed
+
+## [0.1.1] - 2023-07-20
+
+### Added
+
+### Fixed
+
+### Changed
+- Documentation.
+
+### Removed
+
 ## [0.1.0] - 2023-07-11
 
 ### Added
