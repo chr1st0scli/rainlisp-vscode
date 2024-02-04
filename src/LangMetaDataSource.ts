@@ -363,6 +363,15 @@ Note that only the integral part of years is considered.
 [docs](RainLisp/Docs/primitives/cdr.md)`
         },
         {
+            name: 'ceiling',
+            signature: '(ceiling num)',
+            documentation: `Rounds a numeric value to the smallest integral that is greater than or equal to it.
+
+> *num* is a numeric value to round.
+
+[docs](RainLisp/Docs/primitives/ceiling.md)`
+        },
+        {
             name: 'cons',
             signature: '(cons first second)',
             documentation: `Returns a pair made of the two given values.
@@ -436,6 +445,15 @@ Returns a result by evaluating a quote symbol as user code.
 Returns a result by evaluating a non-empty list of quote symbols as user code.
 
 [docs](RainLisp/Docs/primitives/eval.md)`
+        },
+        {
+            name: 'floor',
+            signature: '(floor num)',
+            documentation: `Rounds a numeric value to the largest integral that is less than or equal to it.
+
+> *num* is a numeric value to round.
+
+[docs](RainLisp/Docs/primitives/floor.md)`
         },
         {
             name: 'hour',
