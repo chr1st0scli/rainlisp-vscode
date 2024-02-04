@@ -46,7 +46,7 @@
 		},
 		"primitive": {
 			"name": "entity.name.function.primitive.rainlisp",
-			"match": "((?<=[()\\s])|^)(\\+|-|\\*|\\/|%|<|<=|=|>|>=|add-days|add-hours|add-milliseconds|add-minutes|add-months|add-seconds|add-years|car|cdr|cons|datetime-to-string|day|days-diff|debug|display|error|eval|hour|hours-diff|index-of-string|list|make-date|make-datetime|millisecond|milliseconds-diff|minute|minutes-diff|month|newline|not|now|null\\?|number-to-string|pair\\?|parse-datetime|parse-number|replace-string|round|second|seconds-diff|set-car!|set-cdr!|string-length|substring|to-local|to-lower|to-upper|to-utc|trace|utc-now|utc\\?|xor|year)((?=[;'\"()\\s])|$)"
+			"match": "((?<=[()\\s])|^)(\\+|-|\\*|\\/|%|<|<=|=|>|>=|add-days|add-hours|add-milliseconds|add-minutes|add-months|add-seconds|add-years|car|cdr|ceiling|cons|datetime-to-string|day|days-diff|debug|display|error|eval|floor|hour|hours-diff|index-of-string|list|make-date|make-datetime|millisecond|milliseconds-diff|minute|minutes-diff|month|newline|not|now|null\\?|number-to-string|pair\\?|parse-datetime|parse-number|replace-string|round|second|seconds-diff|set-car!|set-cdr!|string-length|substring|to-local|to-lower|to-upper|to-utc|trace|utc-now|utc\\?|xor|year)((?=[;'\"()\\s])|$)"
 		},
 		"library": {
 			"name": "entity.name.function.library.rainlisp",
