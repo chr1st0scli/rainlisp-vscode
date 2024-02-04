@@ -21,8 +21,6 @@ Semantic versioning is followed.
 ### Added
 - Support for new ceiling and floor primitive procedures.
 
-### Fixed
-
 ## [0.1.1] - 2023-07-20
 
 ### Changed
