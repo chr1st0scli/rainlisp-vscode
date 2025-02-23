@@ -42,7 +42,7 @@
 		},
 		"keyword": {
 			"name": "keyword.rainlisp",
-			"match": "((?<=[()\\s])|^)(quote|set!|define|if|cond|else|begin|lambda|and|or|let)((?=[;'\"()\\s])|$)"
+			"match": "((?<=[()\\s])|^)(quote|set!|define|if|cond|else|begin|lambda|and|or|let|delay|cons-stream)((?=[;'\"()\\s])|$)"
 		},
 		"primitive": {
 			"name": "entity.name.function.primitive.rainlisp",
@@ -50,7 +50,7 @@
 		},
 		"library": {
 			"name": "entity.name.function.library.rainlisp",
-			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
+			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cdr-stream|filter-stream|force|make-range-stream|map-stream|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
 		}
 	},
 	"scopeName": "source.rainlisp"

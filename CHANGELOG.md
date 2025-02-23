@@ -16,15 +16,26 @@ Semantic versioning is followed.
 
 ### Removed
 
+## [0.4.0] - 2025-02-23
+
+### Added
+- Support the `delay` special form for creating delayed expressions.
+- Support the `force` library procedure to force the evaluation of a delayed expression.
+- Support the `cons-stream` derived expression for creating infinite streams.
+- Support the `cdr-stream` library procedure to enable walking through a stream.
+- Support the `make-range-stream` library procedure to make a numerical range stream.
+- Support the `map-stream` library procedure that projects elements of a stream.
+- Support the `filter-stream` library procedure that filters elements of a stream.
+
 ## [0.3.0] - 2024-07-06
 
 ### Added
-- Support for new parse-number-culture primitive procedure.
+- Support for new `parse-number-culture` primitive procedure.
 
 ## [0.2.0] - 2024-02-04
 
 ### Added
-- Support for new ceiling and floor primitive procedures.
+- Support for new `ceiling` and `floor` primitive procedures.
 
 ## [0.1.1] - 2023-07-20
 

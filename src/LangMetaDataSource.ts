@@ -33,6 +33,7 @@ export class LangMetaDataSource {
 
     private metadataMap: Map<string, LangEntityMetadata>;
 
+    // This is in accordance to the RainLisp documentation which is maintained in the corresponding repository.
     private metadata: LangEntityMetadata[] = [
         {
             name: 'nil',
@@ -134,6 +135,26 @@ The expressions are evaluated in the order they appear and the evaluation result
 is the final result of the \`let\` expression.
 
 [docs](RainLisp/Docs/special-forms-derived-expressions/let.md)`
+        },
+        {
+            name: 'delay',
+            type: LangEntityType.Keyword,
+            signature: '(delay expression)',
+            documentation: `A special form that delays the evaluation of the given expression, effectively creating a promise to
+evaluate it in the future. The evaluation result is a procedure which evaluates the expression when called.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/delay.md)`
+        },
+        {
+            name: 'cons-stream',
+            type: LangEntityType.Keyword,
+            signature: '(cons-stream expression expression)',
+            documentation: `A derived expression for constructing a stream, i.e. a pair of an immediately evaluated expression and a delayed one.
+
+The first expression is evaluated immediately and the second one is delayed. The result of the \`cons-stream\` expression is a pair made of the
+value of the first expression and a procedure which evaluates the second one when called, i.e. a promise.
+
+[docs](RainLisp/Docs/special-forms-derived-expressions/cons-stream.md)`
         },
         {
             name: 'or',
@@ -898,6 +919,57 @@ The first *op* call's arguments is the last element of the list followed by the 
             documentation: `Returns a new list by reversing the elements of a given one.
 
 [docs](RainLisp/Docs/common-libraries/reverse.md)`
+        },
+        {
+            name: 'cdr-stream',
+            signature: '(cdr-stream stream)',
+            documentation: `Returns the rest of a stream, i.e. its next element by forcing its promise to be fulfilled and a promise for the rest of it.
+
+[docs](RainLisp/Docs/common-libraries/cdr-stream.md)`
+        },
+        {
+            name: 'filter-stream',
+            signature: '(filter-stream predicate stream)',
+            documentation: `Returns a new stream containing the first element of a stream that satisfies a condition and a promise for the rest of them.
+
+> *predicate* is a procedure accepting a single argument (each element of *stream* at a time) and its result is evaluated as a boolean.
+
+> *stream* is the stream to filter.
+
+[docs](RainLisp/Docs/common-libraries/filter-stream.md)`
+        },
+        {
+            name: 'force',
+            signature: '(force proc)',
+            documentation: `Executes a procedure and returns its result. Typically the procedure is a promise, i.e. a delayed expression that results from
+[delay](RainLisp/Docs/special-forms-derived-expressions/delay.md).
+
+> *proc* is the procedure to execute, typically a promise to evaluate an expression.
+
+[docs](RainLisp/Docs/common-libraries/force.md)`
+        },
+        {
+            name: 'make-range-stream',
+            signature: '(make-range-stream start end)',
+            documentation: `Returns a new stream of numeric values ranging from start until end. The first numeric value is evaluated and the evaluation of the
+rest is deferred, i.e. delayed until explicitly requested. If start is greater than end, [nil](RainLisp/Docs/primitives/nil.md) is returned.
+
+> *start* is the first value of the stream which is immediately evaluated.
+
+> *end* is the last value of the stream.
+
+[docs](RainLisp/Docs/common-libraries/make-range-stream.md)`
+        },
+        {
+            name: 'map-stream',
+            signature: '(map-stream proc stream)',
+            documentation: `Returns a new stream with the projection of the first element and a promise for the projection of the rest of them.
+
+> *proc* is a procedure accepting a single argument (each element of *stream* at a time) and returning a projection.
+
+> *stream* is the delayed list whose each element is mapped to another one on demand.
+
+[docs](RainLisp/Docs/common-libraries/map-stream.md)`
         },
         //#endregion
     ];
