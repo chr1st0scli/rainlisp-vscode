@@ -1,6 +1,6 @@
 # RainLisp VSCode
 
-[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/chr1st0scli.rainlisp-vscode)](https://marketplace.visualstudio.com/items?itemName=chr1st0scli.rainlisp-vscode)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/chr1st0scli.rainlisp-vscode?cacheSeconds=3600)](https://marketplace.visualstudio.com/items?itemName=chr1st0scli.rainlisp-vscode)
 [![License](https://img.shields.io/github/license/chr1st0scli/rainlisp-vscode)](LICENSE.txt)
 
 ![Logo](images/RainLisp-Colored-128x128.png)
