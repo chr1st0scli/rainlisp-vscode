@@ -16,6 +16,12 @@ Semantic versioning is followed.
 
 ### Removed
 
+## [0.5.0] - 2025-07-26
+
+### Added
+- Support the `at-list` library procedure that returns a list item at a given position.
+- Support the `at-stream` library procedure that returns a stream item at a given position.
+
 ## [0.4.0] - 2025-02-23
 
 ### Added
