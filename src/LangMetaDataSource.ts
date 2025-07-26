@@ -971,6 +971,28 @@ rest is deferred, i.e. delayed until explicitly requested. If start is greater t
 
 [docs](RainLisp/Docs/common-libraries/map-stream.md)`
         },
+        {
+            name: 'at-list',
+            signature: '(at-list items index)',
+            documentation: `Returns the element of a list at a given position.
+
+> *items* is the list to look for the required element in.
+
+> *index* is the zero-based position of the required element in the list. If it is negative, zero is assumed.
+
+[docs](RainLisp/Docs/common-libraries/at-list.md)`
+        },
+        {
+            name: 'at-stream',
+            signature: '(at-stream stream index)',
+            documentation: `Returns the element of a stream at a given position. It fulfills the promises in the stream until the required position is reached.
+
+> *stream* is the stream to look for the required element in.
+
+> *index* is the zero-based position of the required element in the stream. If it is negative, zero is assumed.
+
+[docs](RainLisp/Docs/common-libraries/at-stream.md)`
+        },
         //#endregion
     ];
 }

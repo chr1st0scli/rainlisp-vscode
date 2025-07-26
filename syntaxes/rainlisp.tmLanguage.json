@@ -50,7 +50,7 @@
 		},
 		"library": {
 			"name": "entity.name.function.library.rainlisp",
-			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cdr-stream|filter-stream|force|make-range-stream|map-stream|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
+			"match": "((?<=[()\\s])|^)(append|filter|flatmap|fold-left|fold-right|length|map|reduce|reverse|cdr-stream|filter-stream|force|make-range-stream|map-stream|at-list|at-stream|cddr|cadr|caar|cdar|cdddr|caddr|caadr|caaar|cdaar|cddar|cdadr|cadar|cddddr|cadddr|caaddr|caaadr|caaaar|cdaaar|cddaar|cdddar|cdadar|cadadr|cdaddr|cddadr|cadaar|caadar|cdaadr|caddar)((?=[;'\"()\\s])|$)"
 		}
 	},
 	"scopeName": "source.rainlisp"
