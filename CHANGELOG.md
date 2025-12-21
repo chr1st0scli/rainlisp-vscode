@@ -16,6 +16,11 @@ Semantic versioning is followed.
 
 ### Removed
 
+## [0.5.1] - 2025-12-21
+
+### Fixed
+- Accurate interpreter installation instructions.
+
 ## [0.5.0] - 2025-07-26
 
 ### Added
