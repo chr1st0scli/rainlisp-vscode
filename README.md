@@ -20,15 +20,14 @@ where you can find a [tutorial](https://github.com/chr1st0scli/RainLisp/blob/mas
 
 If you want to run RainLisp code and not just write it, you need to download the interpreter, [RainLisp Console](https://github.com/chr1st0scli/RainLispConsole).
 
-You need to have .NET 6 or later installed.
+In order to download RainLispConsole from NuGet and install it as a global tool, run the command `dotnet --list-runtimes` to determine the corresponding command you need to run.
 
-In order to download RainLispConsole from NuGet and install it as a global tool, run the following command in a command line shell.
+|.NET Runtime|Command|
+|------------|-------|
+|6|dotnet tool install -g RainLispConsole --version 1.4.0|
+|8|dotnet tool install -g RainLispConsole|
 
-```
-dotnet tool install -g RainLispConsole
-```
-
-If you already have it installed and you want to update it, run the following command.
+If you already have the latest version installed and you want to update it, run the following command.
 
 ```
 dotnet tool update -g RainLispConsole
