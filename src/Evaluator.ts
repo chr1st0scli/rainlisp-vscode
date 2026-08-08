@@ -22,7 +22,7 @@ export class Evaluator {
 			}
 
 			// Send the file to be evaluated to RainLispConsole.
-			exec('RainLispConsole.exe -f ' + fileName, 
+			exec('RainLispConsole.exe -f "' + fileName + '"', 
 				(error, stdout, stderr) => {
 
 					outputChannel.clear();

@@ -16,6 +16,11 @@ Semantic versioning is followed.
 
 ### Removed
 
+## [0.5.2] - 2026-08-08
+
+### Fixed
+- Cannot evaluate a file containing a space in its path. [#15](https://github.com/chr1st0scli/rainlisp-vscode/issues/15)
+
 ## [0.5.1] - 2025-12-21
 
 ### Fixed
