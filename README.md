@@ -25,7 +25,8 @@ In order to download RainLispConsole from NuGet and install it as a global tool,
 |.NET Runtime|Command|
 |------------|-------|
 |6|dotnet tool install -g RainLispConsole --version 1.4.0|
-|8|dotnet tool install -g RainLispConsole|
+|8|dotnet tool install -g RainLispConsole --version 2.0.0|
+|10|dotnet tool install -g RainLispConsole|
 
 If you already have the latest version installed and you want to update it, run the following command.
 
